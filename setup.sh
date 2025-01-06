@@ -8,6 +8,13 @@ vmcpu=4
 vmmem=8192
 vmname="vm1"
 
+# Optimize performance
+
+echo always | sudo-g5k tee /sys/kernel/mm/transparent_hugepage/enabled    # Enable hugepages
+echo always | sudo-g5k tee /sys/kernel/mm/transparent_hugepage/defrag     # Enable hugepages
+echo 3 | sudo-g5k tee /proc/sys/vm/drop_caches                            # Clear caches to maximize available RAM
+echo 1 | sudo-g5k tee/proc/sys/vm/compact_memory                          # Rearrange RAM usage to maximise the size of free blocks
+
 # Install requirements
 
 sudo-g5k apt install -y stress-ng sysfsutils qemu-kvm virtinst libvirt-clients bridge-utils libvirt-daemon-system

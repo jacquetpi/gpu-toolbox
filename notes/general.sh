@@ -13,6 +13,3 @@ sudo-g5k dmesg | grep IOMMU
 sudo-g5k dmesg | grep VT-d      # Intel
 sudo-g5k dmesg | grep AMD-Vi    # AMD
 lspci -nn | grep -E "NVIDIA" # grep last identifiers in [ XX ]
-
-# Bench
-https://mlcommons.org/benchmarks/
