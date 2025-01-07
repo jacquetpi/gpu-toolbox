@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Check if MIG enabled
-nvidia-smi -i <GPU IDs>
+nvidia-smi -i <GPU IDs> -q | head -n 80
 # Check who use gpu
 # (sudo) /proc/*/fd/* -l | grep /dev/nvid
 #  Disable process using GPU for reset
