@@ -26,8 +26,15 @@ sudo-g5k sysctl -p
 curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube
 sudo-g5k mkdir -p /usr/local/bin/
 sudo-g5k install minikube /usr/local/bin/
-
 minikube start --driver docker --container-runtime docker --gpus all
+# Apply oversubscription policy
+echo ">>Apply oversubscription policy"
+kubectl create -n gpu-operator -f time-slicing-config-all.yaml
+kubectl patch clusterpolicies.nvidia.com/cluster-policy \
+    -n gpu-operator --type merge \
+    -p '{"spec": {"devicePlugin": {"config": {"name": "time-slicing-config-all", "default": "any"}}}}'
+echo ">>Done!"w
+
 # Install GPU-Operator : https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/getting-started.html#prerequisites
-echo "Install Nvidia GPU operator"
+#echo "Install Nvidia GPU operator"
 

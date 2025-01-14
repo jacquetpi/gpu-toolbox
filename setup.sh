@@ -31,7 +31,7 @@ virsh --connect=qemu:///system net-start default
 
 # Unload NVIDIA kernel modules (by first stopping services of lsof /dev/nvidia*)
 sudo-g5k systemctl stop dcgm-exporter.service
-sudo-g5k systemctl stop nvidia-persistenced.service
+#sudo-g5k systemctl stop nvidia-persistenced.service
 
 # Unload NVIDIA kernel modules (to detach GPU from host)
 sudo-g5k modprobe -r nvidia_drm 

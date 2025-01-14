@@ -11,7 +11,7 @@ sudo-g5k systemctl stop dcgm-exporter
 # Enable mig on g5k
 sudo-g5k nvidia-smi -i 0 -pm 1
 sudo-g5k nvidia-smi -i 0 -mig 1
-sudo-g5k nvidia-smi --gpu-reset
+sudo-g5k nvidia-smi -i 0 --gpu-reset
 # Re-enable process
 sudo-g5k systemctl start nvidia-persistenced
 sudo-g5k systemctl start dcgm
@@ -32,5 +32,7 @@ sudo-g5k nvidia-smi mig -lcipp -gi 1
 sudo-g5k  nvidia-smi mig -cci 0 -gi 1
 # List CI on specific GI
 sudo-g5k  nvidia-smi mig -lci -gi 13
+# Display config
+nvidia-smi -L
 # Clear all CI and GI
 sudo-g5k nvidia-smi mig -dci && sudo-g5k nvidia-smi mig -dgi
