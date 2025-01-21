@@ -24,7 +24,7 @@ sudo-g5k nvidia-smi mig -cgi 9,9
 sudo-g5k nvidia-smi mig -lgi
 # Create GI type 19, then 14 then 5
 sudo-g5k nvidia-smi mig -cgi 19,14,5
-sudo-g5k  nvidia-smi mig -lgi
+sudo-g5k  nvidia-smi mig -lci
 # Check CI (Compute Instance) possibilities for GI id 1 and placements
 sudo-g5k nvidia-smi mig -lcip -gi 1
 sudo-g5k nvidia-smi mig -lcipp -gi 1
@@ -34,5 +34,12 @@ sudo-g5k  nvidia-smi mig -cci 0 -gi 1
 sudo-g5k  nvidia-smi mig -lci -gi 13
 # Display config
 nvidia-smi -L
+
+# Use it 
+# Using data from nvidia-smi -L
+docker run --runtime=nvidia -e NVIDIA_VISIBLE_DEVICES="gpu-id:mig-device-id" gpu_burn nvidia-smi -L
+docker run --runtime=nvidia -e NVIDIA_VISIBLE_DEVICES="MIG-c7c4f37c-c47e-566f-8685-577096d87634" gpu_burn nvidia-smi -L
+
+
 # Clear all CI and GI
 sudo-g5k nvidia-smi mig -dci && sudo-g5k nvidia-smi mig -dgi
