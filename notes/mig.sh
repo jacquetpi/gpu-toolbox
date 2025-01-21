@@ -37,8 +37,8 @@ nvidia-smi -L
 
 # Use it 
 # Using data from nvidia-smi -L
-docker run --runtime=nvidia -e NVIDIA_VISIBLE_DEVICES="gpu-id:mig-device-id" gpu_burn nvidia-smi -L
-docker run --runtime=nvidia -e NVIDIA_VISIBLE_DEVICES="MIG-c7c4f37c-c47e-566f-8685-577096d87634" gpu_burn nvidia-smi -L
+sudo-g5k docker run --runtime=nvidia -e NVIDIA_VISIBLE_DEVICES="gpu-id:mig-device-id" gpu_burn nvidia-smi -L
+sudo-g5k docker run --runtime=nvidia -e NVIDIA_VISIBLE_DEVICES="MIG-c7c4f37c-c47e-566f-8685-577096d87634" gpu_burn nvidia-smi -L
 
 
 # Clear all CI and GI
